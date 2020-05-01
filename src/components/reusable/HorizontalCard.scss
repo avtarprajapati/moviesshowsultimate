@@ -1,0 +1,69 @@
+.card {
+  width: auto;
+  // scroll-snap-align: none;
+
+  &__img {
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    // trending card image exceed over width beacause heading h2 padding in content
+    width: 15rem;
+    height: 22rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: 4rem;
+  }
+
+  &__content {
+    padding: 3rem 0.1rem 0 1rem;
+    position: relative;
+
+    .score {
+      font-size: 1.2rem;
+      font-weight: 700;
+      position: absolute;
+      top: -2rem;
+      color: var(--white);
+      background-color: var(--black);
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        content: '';
+        width: 3.2rem;
+        height: 3.2rem;
+        border: 2px solid var(--tertiary);
+        border-radius: 50%;
+        position: absolute;
+        // top: -2rem;
+      }
+    }
+
+    .heading2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0;
+      cursor: pointer;
+    }
+
+    .link {
+      color: var(--black);
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: var(--para);
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.hero {
+  color: var(--white);
+  grid-column: full-start/full-end;
+  background-image: url('../Assets/img/poster.jpg');
+  background-size: no-repeat;
+  background-size: cover;
+  min-height: 30rem;
+  padding: 5rem 11.8rem;
+
+  .heading2 {
+    font-size: 3.5rem;
+    letter-spacing: 0.2rem;
+    margin: 1rem 0;
+  }
+
+  &__content {
+    margin-bottom: 4rem;
+  }
+}

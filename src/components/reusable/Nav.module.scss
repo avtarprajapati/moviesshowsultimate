@@ -1,0 +1,43 @@
+.link,
+.listItem .link {
+  color: var(--white);
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+.listItem {
+  height: 100%;
+  &:not(:last-child) {
+    margin-right: 5rem;
+  }
+  &:hover {
+    .menu {
+      display: block;
+    }
+  }
+}
+
+.menu {
+  font-size: 1.4rem;
+  background-color: #f0eeee;
+  width: 10rem;
+  height: 12.4rem;
+  display: none;
+  position: absolute;
+  border-radius: 5px;
+  padding: 0.5rem 0;
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+
+    li:hover {
+      background-color: #c7c7c7;
+    }
+
+    li .link {
+      color: var(--black);
+    }
+  }
+}

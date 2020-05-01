@@ -1,0 +1,45 @@
+:root {
+  --white: #fffffe;
+  --black: #0f0e17;
+  --hightlight: #ff8906;
+  --para: #a7a9be;
+  --secondary: #f25f4c;
+  --tertiary: #e53170;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+}
+
+ul {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(4rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+    [center-end] minmax(4rem, 1fr) [full-end];
+}
+
+@media only screen and (max-width: 62.5em) {
+  html {
+    font-size: 50%;
+  }
+}

@@ -1,0 +1,119 @@
+.hero {
+  color: var(--white);
+  grid-column: full-start/full-end;
+  background-image: url('../Assets/img/poster.jpg');
+  background-size: no-repeat;
+  background-size: cover;
+  min-height: 30rem;
+  padding: 5rem 11.8rem;
+
+  .heading2 {
+    font-size: 3.5rem;
+    letter-spacing: 0.2rem;
+    margin: 1rem 0;
+  }
+
+  &__content {
+    margin-bottom: 4rem;
+  }
+
+  .form {
+    display: flex;
+  }
+
+  .form__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--black);
+    background-color: var(--white);
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 100px;
+    width: 85%;
+    margin-right: -8rem;
+    outline: none;
+  }
+
+  .form__button {
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+    background-image: linear-gradient(100deg, #3498db, #34495e);
+    outline: none;
+    border-radius: 100px;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: var(--hightlight);
+    }
+  }
+
+  .form__button:hover .form__icon {
+    fill: var(--hightlight);
+  }
+
+  .form__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--white);
+    margin-right: 0.5rem;
+  }
+}
+
+.main__section {
+  grid-column: center-start/-1;
+  margin: 4rem 0;
+
+  .popular__heading {
+    margin-bottom: 2rem;
+  }
+
+  .heading2,
+  .selector_wrap {
+    display: inline-block;
+    margin-right: 5rem;
+  }
+
+  .selector {
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 14rem;
+    width: 20rem;
+    height: 4rem;
+    border: 2px solid var(--black);
+    border-radius: 20px;
+  }
+
+  .anchor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .link {
+    text-decoration: none;
+  }
+
+  .active {
+    color: var(--white);
+    background-color: var(--black);
+    .link {
+      color: var(--white);
+    }
+  }
+}
+
+.card__wrapper {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  width: auto;
+  // height: 35rem;
+}
