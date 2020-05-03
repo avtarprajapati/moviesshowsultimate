@@ -4,7 +4,7 @@ import { fetchPopularMovies } from '../../actions';
 
 import Card from '../reusable/Card';
 
-import './PopularStyle.scss';
+import './MovieStyle.scss';
 
 class Popular extends Component {
   componentDidMount() {

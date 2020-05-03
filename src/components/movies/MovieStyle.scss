@@ -1,0 +1,54 @@
+.section {
+  grid-column: center-start/center-end;
+  margin: 2rem 0;
+
+  .heading2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  // card design separate
+  .card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 0.8rem -0.2rem #a1a0a0;
+    margin: 0 4rem 3rem 0;
+    width: 18rem;
+    padding: 0;
+
+    &__img {
+      border-radius: unset;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      width: 100%;
+      height: 25rem;
+    }
+
+    &__content {
+      .heading2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  .btn__load {
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--secondary);
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    width: 95%;
+    margin: 0 1rem;
+  }
+}
