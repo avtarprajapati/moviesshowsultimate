@@ -16,11 +16,9 @@ import HorizontalCard from '../reusable/HorizontalCard';
 class Home extends Component {
   state = {
     term: '',
-    popularActive: 'movie',
-    // trendingActive: 'tv'
     active: {
       popular: 'movie',
-      trending: 'movie'
+      trending: 'tv'
     }
   };
 
@@ -47,11 +45,9 @@ class Home extends Component {
     // TODO: Here we fetch search action creator
   };
 
-  renderCards = (movies) => {
-    if (movies.length) {
-      return movies.map((movie) => (
-        <HorizontalCard key={movie.id} movie={movie} />
-      ));
+  renderCards = (shows) => {
+    if (shows.length) {
+      return shows.map((show) => <HorizontalCard key={show.id} show={show} />);
     }
   };
 
@@ -69,13 +65,7 @@ class Home extends Component {
       return this.renderCards(this.props.trendingTV);
   }
 
-  // toggleClassName() {
-  //   this.state.active.popular === 'movie' ? 'active' : '';
-  // }
-
   render() {
-    console.log(this.props.trendingMovie);
-    // console.log(this.state.active);
     return (
       <>
         <section className="hero">
@@ -113,7 +103,9 @@ class Home extends Component {
                       this.state.active.popular === 'movie' ? 'active' : ''
                     }`}
                     onClick={() =>
-                      this.setState({ active: { popular: 'movie' } })
+                      this.setState({
+                        active: { ...this.state.active, popular: 'movie' }
+                      })
                     }
                   >
                     <span className="link" data-type="movies">
@@ -124,7 +116,11 @@ class Home extends Component {
                     className={`anchor ${
                       this.state.active.popular === 'tv' ? 'active' : ''
                     }`}
-                    onClick={() => this.setState({ active: { popular: 'tv' } })}
+                    onClick={() =>
+                      this.setState({
+                        active: { ...this.state.active, popular: 'tv' }
+                      })
+                    }
                   >
                     <span className="link" data-type="tv">
                       TV
@@ -141,7 +137,7 @@ class Home extends Component {
         <main className="main__section">
           <div className="popular">
             <div className="popular__heading">
-              <h2 className="heading2">What's Popular</h2>
+              <h2 className="heading2">What's Trending</h2>
               <div className="selector_wrap">
                 <div className="selector">
                   <div
@@ -150,7 +146,9 @@ class Home extends Component {
                       this.state.active.trending === 'movie' ? 'active' : ''
                     }`}
                     onClick={() =>
-                      this.setState({ active: { trending: 'movie' } })
+                      this.setState({
+                        active: { ...this.state.active, trending: 'movie' }
+                      })
                     }
                   >
                     <span className="link" data-type="movies">
@@ -162,7 +160,9 @@ class Home extends Component {
                       this.state.active.trending === 'tv' ? 'active' : ''
                     }`}
                     onClick={() =>
-                      this.setState({ active: { trending: 'tv' } })
+                      this.setState({
+                        active: { ...this.state.active, trending: 'tv' }
+                      })
                     }
                   >
                     <span className="link" data-type="tv">
@@ -172,7 +172,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            {/* <div className="card__wrapper">{this.displayTrendingCard()}</div> */}
+            <div className="card__wrapper">{this.displayTrendingCard()}</div>
           </div>
         </main>
       </>
