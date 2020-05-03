@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './Home/Home';
 import Navbar from './NavigationBar/Navbar';
-import Navbar from './Footer/Footer';
+import Footer from './Footer/Footer';
 
 import {
   MovieDetails,
