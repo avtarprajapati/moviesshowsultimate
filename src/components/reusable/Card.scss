@@ -1,6 +1,7 @@
 .card {
   width: auto;
   // scroll-snap-align: none;
+  margin-bottom: 1rem;
 
   &__img {
     cursor: pointer;
@@ -8,7 +9,7 @@
     overflow: hidden;
     // trending card image exceed over width beacause heading h2 padding in content
     width: 15rem;
-    height: 22rem;
+    // height: 22rem;
 
     img {
       width: 100%;
@@ -58,6 +59,7 @@
 
     .link {
       color: var(--black);
+      text-decoration: none;
     }
 
     p {
