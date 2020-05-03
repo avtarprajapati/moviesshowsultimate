@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Home from './Home/Home';
 import Navbar from './NavigationBar/Navbar';
+import Navbar from './Footer/Footer';
 
 import {
   MovieDetails,
@@ -37,6 +38,7 @@ class App extends Component {
               <Route path="/tv/toprated" exact component={TopRatedTV} />
               <Route path="/movie/:id" exact component={MovieDetails} />
             </Switch>
+            <Footer />
           </React.Fragment>
         </BrowserRouter>
       </div>
