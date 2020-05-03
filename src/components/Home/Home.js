@@ -8,10 +8,9 @@ import {
   fetchTrendingTV
 } from '../../actions';
 
-// import homeStyle from './Home.module.scss';
 import './Home.scss';
 import sprite from '../Assets/sprite.svg';
-import HorizontalCard from '../reusable/HorizontalCard';
+import Card from '../reusable/Card';
 
 class Home extends Component {
   state = {
@@ -47,7 +46,7 @@ class Home extends Component {
 
   renderCards = (shows) => {
     if (shows.length) {
-      return shows.map((show) => <HorizontalCard key={show.id} show={show} />);
+      return shows.map((show) => <Card key={show.id} show={show} />);
     }
   };
 

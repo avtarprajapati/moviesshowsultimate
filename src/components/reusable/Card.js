@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './HorizontalCard.scss';
+import './Card.scss';
 
 const dateFormat = (date) => {
   if (date == null) return date;
@@ -54,7 +54,7 @@ const titleFormat = (title, limit = 25) => {
 
 const imgUrl = 'https://image.tmdb.org/t/p/original/';
 
-const HorizontalCard = ({ show }) => {
+const Card = ({ show }) => {
   return (
     <div className="card">
       <div className="card__img">
@@ -75,4 +75,4 @@ const HorizontalCard = ({ show }) => {
   );
 };
 
-export default HorizontalCard;
+export default Card;
