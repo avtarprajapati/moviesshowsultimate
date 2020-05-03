@@ -15,9 +15,15 @@ const INITIAL_VALUE = {
 export default (state = INITIAL_VALUE, action) => {
   switch (action.type) {
     case FETCH_POPULAR_MOVIE:
-      return { ...state, popular: _.mapKeys(action.payload, 'id') };
+      return {
+        ...state,
+        popular: { ...state.popular, ..._.mapKeys(action.payload, 'id') }
+      };
     case FETCH_TRENDING_MOVIE:
-      return { ...state, trending: _.mapKeys(action.payload, 'id') };
+      return {
+        ...state,
+        trending: { ...state.trending, ..._.mapKeys(action.payload, 'id') }
+      };
     default:
       return { ...state };
   }
