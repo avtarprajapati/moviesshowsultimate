@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './HorizontalCard.scss';
 
 const dateFormat = (date) => {
+  if (date == null) return date;
+
   const months = [
     'Jan',
     'Feb',
@@ -27,6 +29,7 @@ const dateFormat = (date) => {
 };
 
 const titleFormat = (title, limit = 25) => {
+  if (title == null) return title;
   const newTitle = [];
   if (title.length >= limit) {
     // star wars: the rise of skywalker
@@ -51,25 +54,22 @@ const titleFormat = (title, limit = 25) => {
 
 const imgUrl = 'https://image.tmdb.org/t/p/original/';
 
-const HorizontalCard = ({ movie }) => {
+const HorizontalCard = ({ show }) => {
   return (
     <div className="card">
       <div className="card__img">
-        <Link to={`/movie/${movie.id}`}>
-          <img src={`${imgUrl}${movie.poster_path}`} alt={movie.title} />
+        <Link to={`/${show.type}/${show.id}`}>
+          <img src={`${imgUrl}${show.poster_path}`} alt={show.title} />
         </Link>
       </div>
       <div className="card__content">
-        <span className="score">{movie.score}</span>
+        <span className="score">{show.score}</span>
         <h2 className="heading2" className="card__title">
-          <Link to={`/movie/${movie.id}`} className="heading2 link">
-            {titleFormat(movie.title)}
+          <Link to={`/${show}/${show.id}`} className="heading2 link">
+            {titleFormat(show.title)}
           </Link>
         </h2>
-        <p>
-          {dateFormat(movie.release_date)}
-          {/* {movie.release_date} */}
-        </p>
+        <p>{dateFormat(show.release_date)}</p>
       </div>
     </div>
   );

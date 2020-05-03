@@ -27,7 +27,8 @@ export const fetchPopularMovies = (page = 1) => async (dispatch, getState) => {
       poster_path: movie.poster_path,
       overview: movie.overview,
       release_date: movie.release_date,
-      score: movie.vote_average
+      score: movie.vote_average,
+      type: 'movie'
     };
   });
 
@@ -48,7 +49,8 @@ export const fetchPopularTV = (page = 1) => async (dispatch, getState) => {
       poster_path: tv.poster_path,
       overview: tv.overview,
       release_date: tv.first_air_date,
-      score: tv.vote_average
+      score: tv.vote_average,
+      type: 'tv'
     };
   });
 
@@ -68,8 +70,9 @@ export const fetchTrendingMovie = (page = 1) => async (dispatch, getState) => {
       backdrop_path: movie.backdrop_path,
       poster_path: movie.poster_path,
       overview: movie.overview,
-      release_date: movie.first_air_date,
-      score: movie.vote_average
+      release_date: movie.release_date,
+      score: movie.vote_average,
+      type: 'movie'
     };
   });
 
@@ -90,7 +93,8 @@ export const fetchTrendingTV = (page = 1) => async (dispatch, getState) => {
       poster_path: tv.poster_path,
       overview: tv.overview,
       release_date: tv.first_air_date,
-      score: tv.vote_average
+      score: tv.vote_average,
+      type: 'tv'
     };
   });
 
