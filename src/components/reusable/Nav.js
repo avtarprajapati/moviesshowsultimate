@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import NavStyle from './Nav.module.scss';
 
-const subMenu = (subMenuArr) => {
+const subMenu = (mainMenu, subMenuArr) => {
   return subMenuArr.map((menu, i) => (
     <li key={i}>
       <Link
-        to={`/movies/${menu.toLowerCase().split(' ').join('')}`}
+        to={`/${mainMenu}/${menu.toLowerCase().split(' ').join('')}`}
         className={NavStyle.link}
       >
         {menu}
@@ -35,7 +35,7 @@ const renderNav = (item, i) => {
         {mainNav.join().toUpperCase()}
       </Link>
       <div className={NavStyle.menu}>
-        <ul>{subMenu(subArr)}</ul>
+        <ul>{subMenu(mainNav, subArr)}</ul>
       </div>
     </li>
   );
