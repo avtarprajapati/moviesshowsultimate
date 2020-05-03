@@ -70,7 +70,7 @@ class Home extends Component {
       <>
         <section className="hero">
           <div className="hero__content">
-            <h2 className="homeStyle.heading2">Welcome MoviesShows,</h2>
+            <h2 className="heading2">Welcome MoviesShows,</h2>
             <p>Million of movies, tv shows to discover. Explore Now.</p>
           </div>
           <form onSubmit={this.onSubmit} className="form">
