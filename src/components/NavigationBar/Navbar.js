@@ -10,8 +10,8 @@ class Header extends Component {
   render() {
     const Navbar = [
       'Home',
-      { movies: ['Popular', 'Top Rated', 'Upcoming', 'Now Playing'] },
-      { tvshows: ['Popular', 'Top Rated', 'Upcoming', 'Now Playing'] }
+      { movie: ['Popular', 'Top Rated', 'Upcoming', 'Now Playing'] },
+      { tv: ['Popular', 'Top Rated', 'Upcoming', 'Now Playing'] }
     ];
 
     return (
