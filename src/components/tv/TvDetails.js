@@ -63,8 +63,6 @@ class TvDetails extends Component {
       backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${imgUrl}${detail.backdrop_path})`
     };
 
-    console.log(detail.runtime[0]);
-
     return (
       <section className="details" style={bgImg}>
         <div className="poster">
