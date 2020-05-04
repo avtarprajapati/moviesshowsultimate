@@ -65,7 +65,7 @@ const Card = ({ show }) => {
       <div className="card__content">
         <span className="score">{show.score}</span>
         <h2 className="heading2" className="card__title">
-          <Link to={`/${show}/${show.id}`} className="heading2 link">
+          <Link to={`/${show.type}/${show.id}`} className="heading2 link">
             {titleFormat(show.title)}
           </Link>
         </h2>
