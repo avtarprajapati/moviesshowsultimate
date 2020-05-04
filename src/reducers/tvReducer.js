@@ -34,7 +34,7 @@ export default (state = INITIAL_VALUE, action) => {
         ...state,
         tvDetail: {
           ...state.tvDetail,
-          ..._.mapKeys(action.payload, 'id')
+          [action.payload.id]: action.payload
         }
       };
     case FETCH_POPULAR_TV:

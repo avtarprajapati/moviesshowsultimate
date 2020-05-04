@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPopularTV } from '../../actions';
+import { fetchAiringTodayTV } from '../../actions';
 
 import Card from '../reusable/Card';
 
 import './TvStyle.scss';
 
-class Popular extends Component {
+class AiringToday extends Component {
   state = { page: 1 };
 
   componentDidMount() {
-    if (!this.props.popularTv.length)
-      this.props.fetchPopularTV(this.state.page);
+    if (!this.props.airingTodayTv.length)
+      this.props.fetchAiringTodayTV(this.state.page);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
-      this.props.fetchPopularTV(this.state.page);
+      this.props.fetchAiringTodayTV(this.state.page);
     }
   }
 
@@ -31,8 +31,8 @@ class Popular extends Component {
   render() {
     return (
       <section className="section">
-        <h2 className="heading2">Popular Tv Shows</h2>
-        <div className="wrap">{this.renderCard(this.props.popularTv)}</div>
+        <h2 className="heading2">Airing Today Tv Shows</h2>
+        <div className="wrap">{this.renderCard(this.props.airingTodayTv)}</div>
         <button className="btn__load" onClick={this.onInputClick}>
           Load More
         </button>
@@ -43,8 +43,8 @@ class Popular extends Component {
 
 function mapStateToProps(state) {
   return {
-    popularTv: Object.values(state.tv.popular)
+    airingTodayTv: Object.values(state.tv.airingToday)
   };
 }
 
-export default connect(mapStateToProps, { fetchPopularTV })(Popular);
+export default connect(mapStateToProps, { fetchAiringTodayTV })(AiringToday);

@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPopularTV } from '../../actions';
+import { fetchOnAirTV } from '../../actions';
 
 import Card from '../reusable/Card';
 
 import './TvStyle.scss';
 
-class Popular extends Component {
+class OnAir extends Component {
   state = { page: 1 };
 
   componentDidMount() {
-    if (!this.props.popularTv.length)
-      this.props.fetchPopularTV(this.state.page);
+    if (!this.props.onAirTv.length) this.props.fetchOnAirTV(this.state.page);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
-      this.props.fetchPopularTV(this.state.page);
+      this.props.fetchOnAirTV(this.state.page);
     }
   }
 
@@ -31,8 +30,8 @@ class Popular extends Component {
   render() {
     return (
       <section className="section">
-        <h2 className="heading2">Popular Tv Shows</h2>
-        <div className="wrap">{this.renderCard(this.props.popularTv)}</div>
+        <h2 className="heading2">On The Air Tv Shows</h2>
+        <div className="wrap">{this.renderCard(this.props.onAirTv)}</div>
         <button className="btn__load" onClick={this.onInputClick}>
           Load More
         </button>
@@ -43,8 +42,8 @@ class Popular extends Component {
 
 function mapStateToProps(state) {
   return {
-    popularTv: Object.values(state.tv.popular)
+    onAirTv: Object.values(state.tv.onTheAir)
   };
 }
 
-export default connect(mapStateToProps, { fetchPopularTV })(Popular);
+export default connect(mapStateToProps, { fetchOnAirTV })(OnAir);

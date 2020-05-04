@@ -52,7 +52,7 @@ const titleFormat = (title, limit = 25) => {
   return title;
 };
 
-const imgUrl = 'https://image.tmdb.org/t/p/original/';
+const imgUrl = 'https://image.tmdb.org/t/p/original';
 
 const Card = ({ show }) => {
   return (

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchMoviesDetails, youtubeId } from '../../actions';
+import { fetchTvDetails } from '../../actions';
 
 import sprite from '../Assets/sprite.svg';
 
-import './movieDetailsStyle.scss';
+import './tvDetailsStyle.scss';
 
-class MovieDetails extends Component {
+class TvDetails extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.fetchMoviesDetails(id);
-    this.props.youtubeId('movie', id);
+    this.props.fetchTvDetails(id);
   }
+
+  year = (release_date) => {
+    if (!release_date) return;
+    return `(${release_date.split('-')[0]})`;
+  };
 
   dateFormat = (release_date) => {
     if (!release_date) return;
@@ -46,23 +50,10 @@ class MovieDetails extends Component {
     return `${hr} hr ${String(min).substr(0, 2)} min`;
   };
 
-  priceFormat = (price) => {
-    if (!price) return '--';
-    return new Intl.NumberFormat('en-IN').format(price);
-    // price = String;(Math.abs(price));
-    // if (price.length > 3) {
-    //   price =
-    //     price.substr(0, price.length - 3) +
-    //     ',' +
-    //     price.substr(price.length - 3, 3);
-    // }
-    // return price;
-  };
-
   render() {
-    if (!this.props.movieDetail) return 'Loading...';
+    if (!this.props.tvDetail) return 'Loading...';
 
-    const detail = this.props.movieDetail;
+    const detail = this.props.tvDetail;
 
     const imgUrl = 'https://image.tmdb.org/t/p/original';
 
@@ -79,9 +70,7 @@ class MovieDetails extends Component {
           <div className="title">
             <h2>
               {detail.title}
-              <span>
-                ({this.dateFormat(detail.release_date).split('/')[2]})
-              </span>
+              <span>{this.year(detail.release_date)}</span>
             </h2>
             <div className="facts">
               <span className="release">
@@ -103,16 +92,6 @@ class MovieDetails extends Component {
               Play Trailer
             </Link>
           </div>
-          <div className="cost">
-            <div className="budget">
-              <h4 className="heading-4">Budget</h4>
-              <p>&#8377; {this.priceFormat(detail.budget)}</p>
-            </div>
-            <div className="revenue">
-              <h4 className="heading-4">Revenue</h4>
-              <p>&#8377; {this.priceFormat(detail.revenue)}</p>
-            </div>
-          </div>
           <div className="overview">
             <div className="description">
               <h2 className="heading-2">Overview</h2>
@@ -128,11 +107,8 @@ class MovieDetails extends Component {
 function mapStateToProps(state, ownProps) {
   const { id } = ownProps.match.params;
   return {
-    movieDetail: state.movie.movieDetail[id],
-    videoId: state.videoId[id]
+    tvDetail: state.tv.tvDetail[id]
   };
 }
 
-export default connect(mapStateToProps, { fetchMoviesDetails, youtubeId })(
-  MovieDetails
-);
+export default connect(mapStateToProps, { fetchTvDetails })(TvDetails);

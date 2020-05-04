@@ -1,6 +1,9 @@
 // SEARCH
 export const FETCH_SEARCH_VALUE = 'FETCH_SEARCH_VALUE';
 
+// video id
+export const FETCH_VIDEO_ID = 'FETCH_VIDEO_ID';
+
 // MOVIE
 export const FETCH_MOVIE_DETAILS = 'FETCH_MOVIE_DETAILS';
 export const FETCH_POPULAR_MOVIE = 'FETCH_POPULAR_MOVIE';

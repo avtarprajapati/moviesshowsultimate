@@ -1,6 +1,7 @@
 import themoviedb from '../apis/themoviedb';
 import {
   FETCH_SEARCH_VALUE,
+  FETCH_VIDEO_ID,
   FETCH_MOVIE_DETAILS,
   FETCH_POPULAR_MOVIE,
   FETCH_TRENDING_MOVIE,
@@ -45,13 +46,22 @@ export const fetchSearch = (type, page = 1, query) => async (dispatch) => {
   });
 };
 
+// youtube id
+export const youtubeId = (type, id) => async (dispatch) => {
+  const videoDetails = await url(`/${type}/${id}/videos`);
+
+  dispatch({
+    type: FETCH_VIDEO_ID,
+    payload: videoDetails.data
+  });
+};
+
 export const fetchMoviesDetails = (id, page = 1) => async (dispatch) => {
-  const repsonseMovieDetails = await url(`/movie/${id}`, page);
+  const repsonseMovieDetails = await url(`/movie/${Number(id)}`, page);
 
   const videoDetails = await url(`/movie/${id}/videos`);
 
   const {
-    id,
     title,
     backdrop_path,
     poster_path,
@@ -62,7 +72,7 @@ export const fetchMoviesDetails = (id, page = 1) => async (dispatch) => {
     budget,
     revenue,
     runtime
-  } = repsonseMovieDetails;
+  } = repsonseMovieDetails.data;
 
   const movieDetails = {
     id,
@@ -76,7 +86,8 @@ export const fetchMoviesDetails = (id, page = 1) => async (dispatch) => {
     budget,
     revenue,
     runtime,
-    youtube_key: videoDetails.results[0].key
+    type: 'movie'
+    // youtube_key: videoDetails.data.results[0].key
   };
 
   dispatch({
@@ -200,7 +211,6 @@ export const fetchTvDetails = (id, page = 1) => async (dispatch) => {
   const videoDetails = await url(`/tv/${id}/videos`);
 
   const {
-    id,
     name,
     backdrop_path,
     poster_path,
@@ -209,19 +219,20 @@ export const fetchTvDetails = (id, page = 1) => async (dispatch) => {
     vote_average,
     genres,
     episode_run_time
-  } = repsonseTvDetails;
+  } = repsonseTvDetails.data;
 
   const tvDetails = {
     id,
-    name,
+    title: name,
     backdrop_path,
     poster_path,
     overview,
-    first_air_date,
+    release_date: first_air_date,
     score: vote_average,
     genres,
     runtime: episode_run_time,
-    youtube_key: videoDetails.results[0].key
+    type: 'tv'
+    // youtube_key: videoDetails.results[0].key
   };
 
   dispatch({
@@ -294,6 +305,7 @@ export const fetchAiringTodayTV = (page = 1) => async (dispatch) => {
     payload: airingTV
   });
 };
+
 export const fetchOnAirTV = (page = 1) => async (dispatch) => {
   const response = await url(`/tv/on_the_air`, page);
 
