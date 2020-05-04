@@ -47,6 +47,8 @@ class TvDetails extends Component {
       min = min.length >= 2 ? min / 100 : min;
     }
 
+    if (runtime <= 60) return `${runtime} min`;
+
     return `${hr} hr ${String(min).substr(0, 2)} min`;
   };
 
@@ -60,6 +62,8 @@ class TvDetails extends Component {
     const bgImg = {
       backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${imgUrl}${detail.backdrop_path})`
     };
+
+    console.log(detail.runtime[0]);
 
     return (
       <section className="details" style={bgImg}>
@@ -77,7 +81,9 @@ class TvDetails extends Component {
                 {this.dateFormat(detail.release_date)}
               </span>
               <span className="genres">{this.genres(detail.genres)}</span>
-              <span className="runtime">{this.timeFormat(detail.runtime)}</span>
+              <span className="runtime">
+                {this.timeFormat(detail.runtime[0])}
+              </span>
             </div>
           </div>
           <div className="action">
