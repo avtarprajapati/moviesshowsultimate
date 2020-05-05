@@ -79,7 +79,7 @@ class TvDetails extends Component {
     return (
       <section className="details" style={bgImg}>
         <div className="poster">
-          <img src={`${imgUrl}/${detail.poster_path}`} alt={detail.title} />
+          <img src={imgUrl} alt={detail.title} />
         </div>
         <div className="details__content">
           <div className="title">
