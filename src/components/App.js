@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+
+import history from './history';
 
 import Home from './Home/Home';
 import Navbar from './NavigationBar/Navbar';
 import Footer from './Footer/Footer';
+
+import Search from './Search/Search';
 
 import {
   MovieDetails,
@@ -21,11 +25,12 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <BrowserRouter>
+        <Router history={history}>
           <React.Fragment>
             <Navbar />
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/search" exact component={Search} />
               <Route path="/movie/popular" exact component={PopularMovies} />
               <Route path="/movie/toprated" exact component={TopRatedMovies} />
               <Route path="/movie/upcoming" exact component={UpcomingMovies} />
@@ -39,7 +44,7 @@ class App extends Component {
             </Switch>
             <Footer />
           </React.Fragment>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
