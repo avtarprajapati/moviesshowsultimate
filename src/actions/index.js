@@ -1,6 +1,9 @@
 import themoviedb from '../apis/themoviedb';
+import history from '../components/history';
 import {
-  FETCH_SEARCH_VALUE,
+  SEARCH_TERM,
+  FETCH_MOVIE_SEARCH,
+  FETCH_TV_SEARCH,
   FETCH_VIDEO_ID,
   FETCH_MOVIE_DETAILS,
   FETCH_POPULAR_MOVIE,
@@ -16,32 +19,62 @@ import {
   FETCH_ON_THE_AIR__TV
 } from './typeConfig';
 
-const url = (path, page, query = null) => {
+const url = (path, page) => {
   return themoviedb.get(path, {
     params: {
       api_key: '6625deddd4ccf0e5c36110f7e6b9274e',
       language: 'en-US',
-      page: page,
-      query
+      page: page
     }
   });
 };
 
-export const fetchSearch = (type, page = 1, query) => async (dispatch) => {
-  const responseSearch = await url(`/search/${type}`, page, query);
+export const searchTerm = (term) => (dispatch) => {
+  dispatch({
+    type: SEARCH_TERM,
+    payload: term
+  });
+  history.push('/search');
+};
 
-  const searchResult = responseSearch.results.map((value) => {
+export const fetchMovieSearch = (query) => async (dispatch) => {
+  let page = 1;
+  const responseSearch = await url(`/search/movie?query=${query}`, page);
+
+  const searchResult = responseSearch.data.results.map((value) => {
     return {
       id: value.id,
-      title: value.title,
+      title: value.title ?? value.name,
       overview: value.overview,
-      release_date: value.release_date,
-      poster_path: value.poster_path
+      release_date: value.release_date ?? value.episode_run_time,
+      poster_path: value.poster_path,
+      type: 'movie'
     };
   });
 
   dispatch({
-    type: FETCH_SEARCH_VALUE,
+    type: FETCH_MOVIE_SEARCH,
+    payload: searchResult
+  });
+};
+
+export const fetchTvSearch = (query) => async (dispatch) => {
+  let page = 1;
+  const responseSearch = await url(`/search/tv?query=${query}`, page, query);
+
+  const searchResult = responseSearch.data.results.map((value) => {
+    return {
+      id: value.id,
+      title: value.title ?? value.name,
+      overview: value.overview,
+      release_date: value.release_date ?? value.episode_run_time,
+      poster_path: value.poster_path,
+      type: 'tv'
+    };
+  });
+
+  dispatch({
+    type: FETCH_TV_SEARCH,
     payload: searchResult
   });
 };

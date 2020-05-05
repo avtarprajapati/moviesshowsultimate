@@ -1,5 +1,9 @@
+// SEARCH TERM
+export const SEARCH_TERM = 'SEARCH_TERM';
+
 // SEARCH
-export const FETCH_SEARCH_VALUE = 'FETCH_SEARCH_VALUE';
+export const FETCH_MOVIE_SEARCH = 'FETCH_MOVIE_SEARCH';
+export const FETCH_TV_SEARCH = 'FETCH_TV_SEARCH';
 
 // video id
 export const FETCH_VIDEO_ID = 'FETCH_VIDEO_ID';

@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { searchTerm } from '../../actions';
 import sprite from '../Assets/sprite.svg';
 import navbarStyle from './Navbar.module.scss';
 
 import Nav from '../reusable/Nav';
 
 class Header extends Component {
+  state = {
+    value: ''
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.searchTerm(this.state.value);
+  };
+
   render() {
     const Navbar = [
       'Home',
@@ -25,14 +36,20 @@ class Header extends Component {
           <ul className={navbarStyle.navList}>
             <li className={navbarStyle.listItem}>
               <div className={navbarStyle.nav__search}>
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className={navbarStyle.nav__input}
-                />
-                <svg className={navbarStyle.search__icon}>
-                  <use xlinkHref={`${sprite}#icon-search`}></use>
-                </svg>
+                <form onSubmit={this.onSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className={navbarStyle.nav__input}
+                    value={this.state.value}
+                    onChange={(e) => this.setState({ value: e.target.value })}
+                  />
+                  <button>
+                    <svg className={navbarStyle.search__icon}>
+                      <use xlinkHref={`${sprite}#icon-search`}></use>
+                    </svg>
+                  </button>
+                </form>
               </div>
             </li>
             {Nav(Navbar)}
@@ -43,4 +60,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(null, { searchTerm })(Header);

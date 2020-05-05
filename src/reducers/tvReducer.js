@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {
-  FETCH_SEARCH_VALUE,
+  FETCH_TV_SEARCH,
   FETCH_TV_DETAILS,
   FETCH_POPULAR_TV,
   FETCH_TRENDING_TV,
@@ -21,7 +21,7 @@ const INITIAL_VALUE = {
 
 export default (state = INITIAL_VALUE, action) => {
   switch (action.type) {
-    case FETCH_SEARCH_VALUE:
+    case FETCH_TV_SEARCH:
       return {
         ...state,
         searchResult: {
@@ -33,7 +33,6 @@ export default (state = INITIAL_VALUE, action) => {
       return {
         ...state,
         tvDetail: {
-          ...state.tvDetail,
           [action.payload.id]: action.payload
         }
       };

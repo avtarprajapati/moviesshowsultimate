@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import {
-  FETCH_SEARCH_VALUE,
+  SEARCH_TERM,
+  FETCH_MOVIE_SEARCH,
   FETCH_MOVIE_DETAILS,
   FETCH_POPULAR_MOVIE,
   FETCH_TRENDING_MOVIE,
@@ -10,6 +11,7 @@ import {
 } from '../actions/typeConfig';
 
 const INITIAL_VALUE = {
+  searchTerm: '',
   searchResult: {},
   movieDetail: {},
   popular: {},
@@ -21,11 +23,12 @@ const INITIAL_VALUE = {
 
 export default (state = INITIAL_VALUE, action) => {
   switch (action.type) {
-    case FETCH_SEARCH_VALUE:
+    case SEARCH_TERM:
+      return { ...state, searchTerm: action.payload };
+    case FETCH_MOVIE_SEARCH:
       return {
         ...state,
         searchResult: {
-          ...state.searchResult,
           ..._.mapKeys(action.payload, 'id')
         }
       };

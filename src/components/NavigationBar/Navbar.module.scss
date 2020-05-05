@@ -44,6 +44,11 @@
     align-items: center;
     justify-content: flex-end;
 
+    button {
+      background-color: transparent;
+      border: none;
+      transform: translateY(0.5rem);
+    }
     .search__icon {
       fill: var(--black);
       cursor: pointer;
@@ -62,7 +67,7 @@
     outline: none;
     width: 80%;
     transition: all 0.2s;
-    cursor: pointer;
+    // cursor: pointer;
   }
 
   .menu {

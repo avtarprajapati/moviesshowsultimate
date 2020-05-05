@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  searchTerm,
   fetchPopularMovies,
   fetchPopularTV,
   fetchTrendingMovie,
@@ -38,9 +39,12 @@ class Home extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.term);
 
-    // TODO: Here we fetch search action creator
+    // Here send query to search page
+    // <Search query={this.state.term}/>
+    this.props.searchTerm(this.state.term);
+    // this.props.fetchSearch('movie', this.state.term);
+    // this.props.fetchSearch('tv', this.state.term);
   };
 
   renderCards = (shows) => {
@@ -188,6 +192,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
+  searchTerm,
   fetchPopularMovies,
   fetchPopularTV,
   fetchTrendingMovie,
