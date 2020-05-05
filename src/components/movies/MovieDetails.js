@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchMoviesDetails, youtubeId } from '../../actions';
 
+import backgroundImage from '../Assets/img/backgroundImage.jpg';
+import defaultImage from '../Assets/img/defaultImage.jpg';
 import sprite from '../Assets/sprite.svg';
 
 import './movieDetailsStyle.scss';
@@ -64,16 +66,27 @@ class MovieDetails extends Component {
 
     const detail = this.props.movieDetail;
 
-    const imgUrl = 'https://image.tmdb.org/t/p/original';
+    let imgUrl, backImgUrl;
+
+    if (detail.poster_path === null) {
+      imgUrl = defaultImage;
+    } else {
+      imgUrl = `https://image.tmdb.org/t/p/original${detail.poster_path}`;
+    }
+    if (detail.backdrop_path === null) {
+      backImgUrl = backgroundImage;
+    } else {
+      backImgUrl = `https://image.tmdb.org/t/p/original${detail.backdrop_path}`;
+    }
 
     const bgImg = {
-      backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${imgUrl}${detail.backdrop_path})`
+      backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${backImgUrl})`
     };
 
     return (
       <section className="details" style={bgImg}>
         <div className="poster">
-          <img src={`${imgUrl}/${detail.poster_path}`} alt={detail.title} />
+          <img src={imgUrl} alt={detail.title} />
         </div>
         <div className="details__content">
           <div className="title">

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Card.scss';
+import defaultImage from '../Assets/img/defaultImage.jpg';
 
 const dateFormat = (date) => {
   if (date == null) return date;
@@ -52,14 +53,19 @@ const titleFormat = (title, limit = 25) => {
   return title;
 };
 
-const imgUrl = 'https://image.tmdb.org/t/p/original';
-
 const Card = ({ show }) => {
+  let imgUrl;
+  if (!show.poster_path) {
+    imgUrl = defaultImage;
+  } else {
+    imgUrl = `https://image.tmdb.org/t/p/original${show.poster_path}`;
+  }
+
   return (
     <div className="card">
       <div className="card__img">
         <Link to={`/${show.type}/${show.id}`}>
-          <img src={`${imgUrl}${show.poster_path}`} alt={show.title} />
+          <img src={imgUrl} alt={show.title} />
         </Link>
       </div>
       <div className="card__content">

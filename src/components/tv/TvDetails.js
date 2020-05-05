@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchTvDetails } from '../../actions';
 
+import defaultImage from '../Assets/img/defaultImage.jpg';
+import backgroundImage from '../Assets/img/backgroundImage.jpg';
 import sprite from '../Assets/sprite.svg';
 
 import './tvDetailsStyle.scss';
@@ -57,10 +59,21 @@ class TvDetails extends Component {
 
     const detail = this.props.tvDetail;
 
-    const imgUrl = 'https://image.tmdb.org/t/p/original';
+    let imgUrl, backImgUrl;
+
+    if (detail.poster_path === null) {
+      imgUrl = defaultImage;
+    } else {
+      imgUrl = `https://image.tmdb.org/t/p/original${detail.poster_path}`;
+    }
+    if (detail.backdrop_path === null) {
+      backImgUrl = backgroundImage;
+    } else {
+      backImgUrl = `https://image.tmdb.org/t/p/original${detail.backdrop_path}`;
+    }
 
     const bgImg = {
-      backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${imgUrl}${detail.backdrop_path})`
+      backgroundImage: `linear-gradient(#0f0e17cb, #0f0e17cb), url(${backImgUrl})`
     };
 
     return (
