@@ -41,8 +41,6 @@ export const searchTerm = (term) => (dispatch) => {
 export const youtubeId = (type, id) => async (dispatch) => {
   const videoDetails = await url(`/${type}/${id}/videos`);
 
-  console.log(videoDetails.data);
-
   dispatch({
     type: FETCH_VIDEO_ID,
     payload: videoDetails.data
