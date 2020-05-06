@@ -25,7 +25,6 @@ export default (state = INITIAL_VALUE, action) => {
       return {
         ...state,
         searchResult: {
-          ...state.searchResult,
           ..._.mapKeys(action.payload, 'id')
         }
       };
