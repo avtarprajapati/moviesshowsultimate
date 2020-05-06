@@ -79,7 +79,7 @@ class Home extends Component {
             <input
               type="text"
               className="form__input"
-              placeholder="search movies and tv shows"
+              placeholder="search"
               value={this.state.term}
               onChange={(e) => this.setState({ term: e.target.value })}
             />
