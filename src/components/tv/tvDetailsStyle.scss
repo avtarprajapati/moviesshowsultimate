@@ -112,3 +112,62 @@
     }
   }
 }
+
+@media only screen and (max-width: 53.12em) {
+  .details {
+    padding: 4rem 5rem;
+  }
+}
+
+@media only screen and (max-width: 42em) {
+  .details {
+    flex-direction: column;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 0;
+
+    .poster {
+      width: 50rem;
+      height: 25rem;
+      // padding: 4rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    &__content {
+      background-color: #34495e;
+    }
+    .title,
+    .facts {
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 36.25em) {
+  .details {
+    background-color: coral;
+
+    .poster {
+      width: 20rem;
+      height: 25rem;
+      padding: 1rem 4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 30.5em) {
+  .details {
+    .poster {
+      height: 15rem;
+    }
+    .facts {
+      flex-direction: column;
+      & > * {
+        margin: 0.5rem;
+      }
+    }
+    .overview {
+      width: 40rem;
+    }
+  }
+}
