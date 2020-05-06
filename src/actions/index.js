@@ -22,7 +22,7 @@ import {
 const url = (path, page) => {
   return themoviedb.get(path, {
     params: {
-      api_key: '6625deddd4ccf0e5c36110f7e6b9274e',
+      api_key: process.env.REACT_APP_MOVIE_API,
       language: 'en-US',
       page: page
     }
