@@ -37,6 +37,18 @@ export const searchTerm = (term) => (dispatch) => {
   history.push('/search');
 };
 
+// youtube id
+export const youtubeId = (type, id) => async (dispatch) => {
+  const videoDetails = await url(`/${type}/${id}/videos`);
+
+  console.log(videoDetails.data);
+
+  dispatch({
+    type: FETCH_VIDEO_ID,
+    payload: videoDetails.data
+  });
+};
+
 export const fetchMovieSearch = (query) => async (dispatch) => {
   let page = 1;
   const responseSearch = await url(`/search/movie?query=${query}`, page);
@@ -76,16 +88,6 @@ export const fetchTvSearch = (query) => async (dispatch) => {
   dispatch({
     type: FETCH_TV_SEARCH,
     payload: searchResult
-  });
-};
-
-// youtube id
-export const youtubeId = (type, id) => async (dispatch) => {
-  const videoDetails = await url(`/${type}/${id}/videos`);
-
-  dispatch({
-    type: FETCH_VIDEO_ID,
-    payload: videoDetails.data
   });
 };
 
