@@ -109,7 +109,10 @@ class MovieDetails extends Component {
               <span className="score">{detail.score * 10}</span>
               User Score
             </div>
-            <Link to="/" className="link playbtn">
+            <Link
+              to={`/movie/${detail.id}/${this.props.videoId}`}
+              className="link playbtn"
+            >
               <svg className="play">
                 <use xlinkHref={`${sprite}#icon-play`}></use>
               </svg>

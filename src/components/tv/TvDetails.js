@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchTvDetails } from '../../actions';
+import { fetchTvDetails, youtubeId } from '../../actions';
 
 import defaultImage from '../Assets/img/defaultImage.jpg';
 import backgroundImage from '../Assets/img/backgroundImage.jpg';
@@ -13,6 +13,7 @@ class TvDetails extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchTvDetails(id);
+    this.props.youtubeId('tv', id);
   }
 
   year = (release_date) => {
@@ -102,7 +103,10 @@ class TvDetails extends Component {
               <span className="score">{detail.score * 10}</span>
               User Score
             </div>
-            <Link to="/" className="link playbtn">
+            <Link
+              to={`/tv/${detail.id}/${this.props.videoId}`}
+              className="link playbtn"
+            >
               <svg className="play">
                 <use xlinkHref={`${sprite}#icon-play`}></use>
               </svg>
@@ -124,8 +128,11 @@ class TvDetails extends Component {
 function mapStateToProps(state, ownProps) {
   const { id } = ownProps.match.params;
   return {
+    videoId: state.videoId[id],
     tvDetail: state.tv.tvDetail[id]
   };
 }
 
-export default connect(mapStateToProps, { fetchTvDetails })(TvDetails);
+export default connect(mapStateToProps, { fetchTvDetails, youtubeId })(
+  TvDetails
+);
