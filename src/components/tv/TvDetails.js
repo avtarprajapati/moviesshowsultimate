@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchTvDetails, youtubeId } from '../../actions';
 
+import Video from '../Video/Video';
 import defaultImage from '../Assets/img/defaultImage.jpg';
 import backgroundImage from '../Assets/img/backgroundImage.jpg';
 import sprite from '../Assets/sprite.svg';
@@ -10,6 +10,10 @@ import sprite from '../Assets/sprite.svg';
 import './tvDetailsStyle.scss';
 
 class TvDetails extends Component {
+  state = {
+    show: 'false'
+  };
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchTvDetails(id);
@@ -54,6 +58,18 @@ class TvDetails extends Component {
 
     return `${hr} hr ${String(min).substr(0, 2)} min`;
   };
+
+  showVideo() {
+    if (this.state.show === 'true') {
+      return (
+        <Video
+          id={this.props.tvDetail.id}
+          videoId={this.props.videoId}
+          show={(bool) => this.setState({ show: bool })}
+        />
+      );
+    }
+  }
 
   render() {
     if (!this.props.tvDetail) return 'Loading...';
@@ -103,15 +119,15 @@ class TvDetails extends Component {
               <span className="score">{detail.score * 10}</span>
               User Score
             </div>
-            <Link
-              to={`/tv/${detail.id}/${this.props.videoId}`}
+            <span
               className="link playbtn"
+              onClick={() => this.setState({ show: 'true' })}
             >
               <svg className="play">
                 <use xlinkHref={`${sprite}#icon-play`}></use>
               </svg>
               Play Trailer
-            </Link>
+            </span>
           </div>
           <div className="overview">
             <div className="description">
@@ -120,6 +136,7 @@ class TvDetails extends Component {
             </div>
           </div>
         </div>
+        {this.showVideo()}
       </section>
     );
   }

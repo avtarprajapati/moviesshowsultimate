@@ -1,9 +1,7 @@
 .details {
   grid-column: full-start/full-end;
-  //   background: linear-gradient(rgba(var(--black), 0.7), rgba(var(--black), 0.7));
   background-size: cover;
   background-repeat: no-repeat;
-  // padding: 4rem 12rem;
   color: var(--white);
   display: flex;
 
@@ -57,6 +55,7 @@
 
       .playbtn {
         display: inline-block;
+        cursor: pointer;
       }
 
       .play {
