@@ -1,24 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-
-import history from '../history';
 
 import './VideoStyle.scss';
 
-const Video = ({ id, videoId, type }) => {
+const Video = ({ id, videoId, show }) => {
   const videoUrl = `https://www.youtube.com/embed/${videoId}`;
 
-  return ReactDOM.createPortal(
-    <div className="backModel" onClick={() => history.push(`/${type}/${id}`)}>
+  return (
+    <div className="backModel" onClick={() => show(false)}>
       <div onClick={(e) => e.stopPropagation()} className="model">
-        <Link to={`/${type}/${id}`} className="close">
+        <span onClick={() => show(false)} className="close">
           X
-        </Link>
-        <iframe src={videoUrl} className="video" />
+        </span>
+        <iframe src={videoUrl} className="video" title={id} />
       </div>
-    </div>,
-    document.getElementById('video')
+    </div>
   );
 };
 
