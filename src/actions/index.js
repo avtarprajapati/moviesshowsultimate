@@ -92,8 +92,6 @@ export const fetchTvSearch = (query) => async (dispatch) => {
 export const fetchMoviesDetails = (id, page = 1) => async (dispatch) => {
   const repsonseMovieDetails = await url(`/movie/${Number(id)}`, page);
 
-  const videoDetails = await url(`/movie/${id}/videos`);
-
   const {
     title,
     backdrop_path,
@@ -120,7 +118,6 @@ export const fetchMoviesDetails = (id, page = 1) => async (dispatch) => {
     revenue,
     runtime,
     type: 'movie'
-    // youtube_key: videoDetails.data.results[0].key
   };
 
   dispatch({
@@ -241,8 +238,6 @@ export const fetchNowPlayingMovies = (page = 1) => async (dispatch) => {
 export const fetchTvDetails = (id, page = 1) => async (dispatch) => {
   const repsonseTvDetails = await url(`/tv/${id}`, page);
 
-  const videoDetails = await url(`/tv/${id}/videos`);
-
   const {
     name,
     backdrop_path,
@@ -265,7 +260,6 @@ export const fetchTvDetails = (id, page = 1) => async (dispatch) => {
     genres,
     runtime: episode_run_time,
     type: 'tv'
-    // youtube_key: videoDetails.results[0].key
   };
 
   dispatch({
