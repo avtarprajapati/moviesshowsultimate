@@ -11,21 +11,13 @@ import Search from './Search/Search';
 
 import {
   MovieDetails,
-  VideoPlayMovie,
   PopularMovies,
   TopRatedMovies,
   UpcomingMovies,
   NowPlayMovies
 } from './movies';
 
-import {
-  VideoPlayTv,
-  PopularTV,
-  TopRatedTV,
-  OnAir,
-  AiringToday,
-  TvDetails
-} from './tv';
+import { PopularTV, TopRatedTV, OnAir, AiringToday, TvDetails } from './tv';
 
 import './App.scss';
 
@@ -44,17 +36,11 @@ class App extends Component {
               <Route path="/movie/upcoming" exact component={UpcomingMovies} />
               <Route path="/movie/nowplaying" exact component={NowPlayMovies} />
               <Route path="/movie/:id" exact component={MovieDetails} />
-              <Route
-                path="/movie/:id/:videoId"
-                exact
-                component={VideoPlayMovie}
-              />
               <Route path="/tv/popular" exact component={PopularTV} />
               <Route path="/tv/onair" exact component={OnAir} />
               <Route path="/tv/airingtoday" exact component={AiringToday} />
               <Route path="/tv/toprated" exact component={TopRatedTV} />
               <Route path="/tv/:id" exact component={TvDetails} />
-              <Route path="/tv/:id/:videoId" exact component={VideoPlayTv} />
             </Switch>
             <Footer />
           </React.Fragment>
