@@ -19,7 +19,7 @@ const dateFormat = (date) => {
     'Sep',
     'Oct',
     'Nov',
-    'Dec'
+    'Dec',
   ];
 
   const splitDate = date.split('-');
@@ -62,16 +62,16 @@ const Card = ({ show }) => {
   }
 
   return (
-    <div className="card">
-      <div className="card__img">
+    <div className='card'>
+      <div className='card__img'>
         <Link to={`/${show.type}/${show.id}`}>
           <img src={imgUrl} alt={show.title} />
         </Link>
       </div>
-      <div className="card__content">
-        <span className="score">{show.score}</span>
-        <h2 className="heading2" className="card__title">
-          <Link to={`/${show.type}/${show.id}`} className="heading2 link">
+      <div className='card__content'>
+        <span className='score'>{show.score}</span>
+        <h2 className='heading2 card__title'>
+          <Link to={`/${show.type}/${show.id}`} className='heading2 link'>
             {titleFormat(show.title)}
           </Link>
         </h2>
